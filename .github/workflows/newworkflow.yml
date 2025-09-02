@@ -1,0 +1,20 @@
+name: NewPipelineWorkflow
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  trigger-azure-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Azure DevOps Pipeline
+        uses: azure/pipelines@v1
+        with:
+          azure-devops-project-url: 'https://dev.azure.com/Madhura2/Asc-madhura'
+          azure-pipeline-name: 'Ascendion-madhura (3)'
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
